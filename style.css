@@ -1,0 +1,210 @@
+:root {
+  --bg-glow-1: rgba(255, 226, 170, 0.3);
+  --bg-glow-2: rgba(255, 255, 255, 0.16);
+  --bg-gradient-start: #6a75c2;
+  --bg-gradient-mid: #9575b5;
+  --bg-gradient-end: #c48fa8;
+  --card-bg: #ffffff;
+  --text-primary: #1e1b2e;
+  --text-muted: #6b6580;
+  --accent: #7c6ab5;
+  --accent-soft: #f3effe;
+  --result-color: #b0578d;
+  --border: #e6e1f2;
+  --error: #c0396f;
+  --shadow: 0 20px 45px -15px rgba(106, 117, 194, 0.35);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-glow-1: rgba(255, 214, 140, 0.12);
+    --bg-glow-2: rgba(255, 255, 255, 0.05);
+    --bg-gradient-start: #1b1a3a;
+    --bg-gradient-mid: #3d2e6b;
+    --bg-gradient-end: #5c2f4d;
+    --card-bg: #1c1830;
+    --text-primary: #f2f0fa;
+    --text-muted: #a79fc4;
+    --accent: #b794f6;
+    --accent-soft: #2a2347;
+    --result-color: #e69bc0;
+    --border: #332a52;
+    --shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.55);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1.25rem;
+  padding-top: 2rem;
+  font-family: 'Segoe UI', system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text-primary);
+  background:
+    radial-gradient(circle at 12% 18%, var(--bg-glow-1), transparent 42%),
+    radial-gradient(circle at 88% 82%, var(--bg-glow-2), transparent 48%),
+    linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-mid) 50%, var(--bg-gradient-end) 100%);
+  background-attachment: fixed;
+}
+
+.card {
+  width: 100%;
+  max-width: 480px;
+  max-height: calc(100vh - 3.25rem);
+  overflow-y: auto;
+  background: var(--card-bg);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  padding: 1.1rem 1.5rem 1.5rem;
+}
+
+.card__header {
+  text-align: center;
+  margin-bottom: 0.6rem;
+}
+
+.card__title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.card__subtitle {
+  margin: 0.15rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+.field {
+  margin-bottom: 0.25rem;
+}
+
+.field__label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.field__row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.field__input {
+  flex: 1;
+  min-width: 0;
+  height: 2.5rem;
+  padding: 0 0.75rem;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  background: var(--accent-soft);
+  border: 1.5px solid transparent;
+  border-radius: 10px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.field__input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+.field__hint {
+  margin: 0.3rem 0 0;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.error-message {
+  margin: 0.3rem 0 0;
+  font-size: 0.75rem;
+  color: var(--error);
+  font-weight: 600;
+}
+
+.icon-button {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--text-muted);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.1s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+.icon-button:hover {
+  background: var(--accent-soft);
+  color: var(--text-primary);
+}
+
+.icon-button:active {
+  transform: scale(0.94);
+}
+
+.results {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.result {
+  text-align: center;
+  padding: 0.4rem 0.4rem;
+  background: var(--accent-soft);
+  border-radius: 10px;
+}
+
+.result__label {
+  display: block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.2rem;
+}
+
+.result__value {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--result-color);
+}
+
+.pyramid {
+  margin: 0;
+  padding: 0.85rem 0.75rem;
+  min-height: 2.5rem;
+  background: var(--accent-soft);
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  font-family: 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--result-color);
+  text-align: center;
+  white-space: pre;
+  overflow-x: auto;
+}
+
+.card__footer {
+  margin-top: 0.6rem;
+  text-align: center;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}

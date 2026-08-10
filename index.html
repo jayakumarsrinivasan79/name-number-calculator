@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Name Number Calculator</title>
+  <meta name="description" content="Calculate your name number, its reduced digit, and its numerology pyramid.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="card">
+    <header class="card__header">
+      <h1 class="card__title">Name Number Calculator</h1>
+      <p class="card__subtitle">Name number &amp; numerology pyramid</p>
+    </header>
+
+    <form autocomplete="off">
+      <div class="field">
+        <label class="field__label" for="name-input">Name</label>
+        <div class="field__row">
+          <input
+            class="field__input"
+            type="text"
+            id="name-input"
+            name="name"
+            placeholder="e.g. V.R. Vijay Manoj"
+            autofocus
+          >
+          <button type="button" class="icon-button" id="clear-button" aria-label="Clear name" title="Clear">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <line x1="5" y1="5" x2="19" y2="19"></line>
+              <line x1="19" y1="5" x2="5" y2="19"></line>
+            </svg>
+          </button>
+        </div>
+        <p class="field__hint">Letters, spaces, and periods only.</p>
+        <p class="error-message" id="error-message" hidden></p>
+      </div>
+    </form>
+
+    <section class="results" aria-label="Results">
+      <div class="result">
+        <span class="result__label">Name Number</span>
+        <span class="result__value" id="name-number-output">–</span>
+      </div>
+      <div class="result">
+        <span class="result__label">Reduced Sum</span>
+        <span class="result__value" id="reduced-number-output">–</span>
+      </div>
+      <div class="result">
+        <span class="result__label">Pyramid Number</span>
+        <span class="result__value" id="pyramid-number-output">–</span>
+      </div>
+    </section>
+
+    <pre class="pyramid" id="pyramid-output" aria-label="Numerology pyramid"></pre>
+
+    <footer class="card__footer">
+      Built as a hobby project &mdash; a modernized take on a classic numerology calculator.
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
